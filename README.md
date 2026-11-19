@@ -65,7 +65,7 @@ pytest
 
 ## What each meeting covers
 
-The repo grows meeting by meeting. First a pipeline (`.github/workflows/ci.yml`), later containers, infrastructure and monitoring. Find your meeting below to see what it covers. Nothing here is homework, and later topics are planned: order and details may change.
+The repo grows meeting by meeting. It starts with a pipeline (`.github/workflows/ci.yml`) and adds one topic per meeting. Find your meeting below to see what it covers. Nothing here is homework.
 
 ### Meeting 1: first CI
 
@@ -196,9 +196,16 @@ Tasks:
 
 Prometheus reads the numbers every service offers on a schedule: the app lists them at `/metrics`, and Prometheus asks for them again and again. A counter only goes up, a histogram counts values into buckets, and a label is how you ask a question of the numbers. Grafana draws what Prometheus stores. An alert rule is a query that must stay true for a while.
 
+If you missed this meeting: copy these as whole files: `services/tasks-api/app/metrics.py`, `services/tasks-api/app/__init__.py`, `services/tasks-api/requirements.txt`, `services/tasks-api/tests/test_metrics.py`; add the two services (`prometheus`, `grafana`) to your own `compose.yaml` (or copy `compose.yaml` if you have none); copy `prometheus/prometheus.yml` and `prometheus/alerts.yml` together; then in Grafana add the data source (URL `http://prometheus:9090`) and build the panels. Run the firewall command once per Codespace session. None of this is homework.
+
 Docs: [Prometheus overview](https://prometheus.io/docs/introduction/overview/), [Prometheus configuration](https://prometheus.io/docs/prometheus/latest/configuration/configuration/), [Alerting rules](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/), [Querying basics](https://prometheus.io/docs/prometheus/latest/querying/basics/), [Prometheus Python client](https://prometheus.github.io/client_python/), [Grafana: Prometheus data source](https://grafana.com/docs/grafana/latest/datasources/prometheus/configure/), [Compose services](https://docs.docker.com/reference/compose-file/services/), [Compose volumes](https://docs.docker.com/reference/compose-file/volumes/), [Forwarding ports in your codespace](https://docs.github.com/en/codespaces/developing-in-a-codespace/forwarding-ports-in-your-codespace).
 
-### Coming later (planned)
+Tasks:
 
-- Monitoring: metrics from the app, Prometheus, Grafana. Docs: [Prometheus overview](https://prometheus.io/docs/introduction/overview/).
-
+1. Copy the four instrumentation files and see the `http_requests_total` series on `/metrics`.
+2. Add `prometheus` and `grafana` to `compose.yaml` and open both pages.
+3. Write `prometheus/prometheus.yml` so the target `tasks-api` is UP.
+4. In Grafana add the data source and build a panel that answers a question.
+5. Push, open a pull request and merge it.
+6. Write an alert rule for errors on `/tasks`.
+7. Build a second panel.
