@@ -209,3 +209,19 @@ Tasks:
 5. Push, open a pull request and merge it.
 6. Write an alert rule for errors on `/tasks`.
 7. Build a second panel.
+
+### Meeting 10: infrastructure as code
+
+A file can declare what should exist, and a tool makes it so. `plan` shows the difference between the file and what exists before anything changes, the state records what was made, and `for_each` turns one definition into several environments.
+
+#### Install Terraform
+
+```bash
+curl -fsSL -o /tmp/install-terraform.sh https://raw.githubusercontent.com/kubino148/tasks-app-reference/main/scripts/install-terraform.sh
+cat /tmp/install-terraform.sh
+bash /tmp/install-terraform.sh
+```
+
+Read the script before you run it.
+
+Docs: [Terraform: resource blocks](https://developer.hashicorp.com/terraform/language/block/resource), [for_each](https://developer.hashicorp.com/terraform/language/meta-arguments/for_each), [Local values](https://developer.hashicorp.com/terraform/language/values/locals), [Output values](https://developer.hashicorp.com/terraform/language/values/outputs), [References to values](https://developer.hashicorp.com/terraform/language/expressions/references), [Strings and templates](https://developer.hashicorp.com/terraform/language/expressions/strings), [depends_on](https://developer.hashicorp.com/terraform/language/meta-arguments/depends_on), [terraform init](https://developer.hashicorp.com/terraform/cli/commands/init), [terraform plan](https://developer.hashicorp.com/terraform/cli/commands/plan), [terraform apply](https://developer.hashicorp.com/terraform/cli/commands/apply), [terraform destroy](https://developer.hashicorp.com/terraform/cli/commands/destroy), [terraform state list](https://developer.hashicorp.com/terraform/cli/commands/state/list), [terraform output](https://developer.hashicorp.com/terraform/cli/commands/output), [terraform validate](https://developer.hashicorp.com/terraform/cli/commands/validate), [Dependency lock file](https://developer.hashicorp.com/terraform/language/files/dependency-lock), [Docker provider: docker_container](https://registry.terraform.io/providers/kreuzwerker/docker/4.7.0/docs/resources/container), [Docker provider: docker_network](https://registry.terraform.io/providers/kreuzwerker/docker/4.7.0/docs/resources/network)
